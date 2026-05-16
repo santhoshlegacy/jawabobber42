@@ -25,14 +25,29 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JAWA 42 Bobber — Own The Shadow",
-  description:
-    "Experience the Jawa 42 Bobber — where heritage meets shadow. A cinematic scrollytelling showcase of mechanical luxury.",
-  keywords: ["Jawa 42 Bobber", "motorcycle", "bobber", "scrollytelling", "cinematic"],
+  title: "Jawa 42 Bobber | Own The Shadow",
+  description: "A cinematic, luxury showcase of the Jawa 42 Bobber. Czech engineering soul reborn in Indian metal. Pure steel, crafted for the bold.",
   openGraph: {
-    title: "JAWA 42 Bobber — Own The Shadow",
-    description: "Where heritage meets shadow. Cinematic motorcycle experience.",
+    title: "Jawa 42 Bobber | Own The Shadow",
+    description: "Experience the interactive 3D showcase of the Jawa 42 Bobber.",
+    url: "https://your-vercel-link-goes-here.vercel.app", /* Update this once you get your link! */
+    siteName: "Jawa Motorcycles",
+    images: [
+      {
+        url: "/gallery/img-1.jpeg", /* Uses your best gallery image for the preview! */
+        width: 1200,
+        height: 630,
+        alt: "Jawa 42 Bobber Side Profile",
+      },
+    ],
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jawa 42 Bobber | Own The Shadow",
+    description: "Experience the interactive 3D showcase of the Jawa 42 Bobber.",
+    images: ["/gallery/img-1.jpeg"],
   },
 };
 
