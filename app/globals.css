@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-accent-gold: #c9a84c;
+  --color-accent-chrome: #d4d4d4;
+  --color-accent-tungsten: #b8860b;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #71717a;
+  --color-glass-bg: rgba(255, 255, 255, 0.02);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  --font-heading: var(--font-bebas);
+  --font-mono: var(--font-space-mono);
+  --font-body: var(--font-inter);
+
+  --radius-glass: 16px;
+}
+
+/* ─── CURSOR STYLES ───────────────────────────────── */
+.cursor-outer {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-inner {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+}
+
+.cursor-outer.is-hovering {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+.cursor-inner.is-hovering {
+  opacity: 0;
+}
+
+/* ─── BUTTON UTILITIES ────────────────────────────── */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-fill:hover::after {
+  left: 100%;
+}
+
+/* ─── RESET & BASE ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── GRAIN OVERLAY (Premium Texture) ──────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, 2%); }
+  40% { transform: translate(2%, -2%); }
+}
+
+/* ─── ELITE LIGHTING UTILITIES ─────────────────────── */
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
+}
+
+.text-glow {
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+}
+
+/* ─── GLASSMORPHISM (Refined) ──────────────────────── */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ════════════════════════════════════════════════════════════
+   LUXURY MODE: INVISIBLE SCROLLBARS 
+════════════════════════════════════════════════════════════ */
+html, body {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+/* ─── TYPOGRAPHY POLISH ────────────────────────────── */
+.font-heading {
+  letter-spacing: -0.02em;
+}
+
+.tracking-ultra {
+  letter-spacing: 0.8em;
+}
+
+/* ─── MASKING & REVEALS ────────────────────────────── */
+.reveal-mask {
+  mask-image: linear-gradient(to right, black 0%, black 100%);
+  mask-size: 0% 100%;
+  mask-repeat: no-repeat;
+  transition: mask-size 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-mask.active {
+  mask-size: 100% 100%;
+}
